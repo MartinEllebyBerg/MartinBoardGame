@@ -18,33 +18,31 @@ public class UserInterface {
     public void playGame() {
         welcomeText();
 
-        System.out.println("Tryk på Enter for at fortsætte");
         String input1 = scannerInput.nextLine();
+        if (input1 != "<") {
+            descriptionTextAdventure();
+        }
 
-        switch (input1) {
-            case "":
-                System.out.println("Du trykkede på Enter - programmet fortsætter\n");
-                descriptionTextAdventure();
-                break;
-            default:
-                System.out.println("Programmet lukker");
-                break;
-        }
-        System.out.println("Tryk på Enter for at fortsætte");
         String input2 = scannerInput.nextLine();
-        switch (input2) {
-            case "":
-                System.out.println("Du trykkede på Enter - \n");
-                userMenu();
-                break;
+        if (input2 != "<") {
+            userMenu();
         }
+
         while (gameIsRunning) {
             command = "";
+            command = scannerInput.next().toLowerCase();
 
             switch (command) {
-                case "1" -> System.out.println("Case 1");
-                case "2" -> System.out.println("Case 2");
+                case "1" -> {
+                    userMenu();
+                }
+                case "2" -> {
+                    welcomeText();
+                }
 
+                case "Exit", "exit" -> {
+                    System.exit(0);
+                }
 
                 default -> System.out.println("Det kan du ikke skrive - prøv igen");
             }
@@ -59,6 +57,7 @@ public class UserInterface {
         System.out.println("*          MARTIN ELLEBY BERG        *");
         System.out.println("*                                    *");
         System.out.println("**************************************\n");
+        System.out.println("Tryk på Enter for at fortsætte");
     }
 
     public void descriptionTextAdventure() {
@@ -71,7 +70,6 @@ public class UserInterface {
         System.out.println("samarbejde og mod står vi ansigt til ansigt med udfordringen, fast besluttet");
         System.out.println("på at overvinde monstrene og fortsætte vores søgen efter Martin Elleby Berg.");
         System.out.println("Eventyret venter, og vi vil ikke lade noget stoppe os.\n");
-
     }
 
     public void userMenu() {
@@ -79,6 +77,5 @@ public class UserInterface {
         System.out.println("!!!HOVEDMENU!!!");
         System.out.println("Venligst vælg din næste handling:");
         System.out.println("Tast '1' for at ");
-
     }
 }
