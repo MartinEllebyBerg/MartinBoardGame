@@ -1,14 +1,22 @@
+import java.util.ArrayList;
+
 public class Room {
 
     //Attributes
     private String roomName;
     private String roomDescription;
     private Room up, down, left, right;
+    private ArrayList<Item> itemList = new ArrayList<Item>();
 
     //Konstruktør
     public Room(String roomName, String roomDescription) {
         this.roomName = roomName;
         this.roomDescription = roomDescription;
+    }
+
+    //Metode til at tilføje items til rummene
+    public void addItemToARoom(Item item) {
+        itemList.add(item);
     }
 
     //Getter metoder
@@ -36,7 +44,7 @@ public class Room {
         return right;
     }
 
-   //Setter metoder
+    //Setter metoder
     public void setUp(Room up) {
         this.up = up;
     }

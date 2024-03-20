@@ -21,6 +21,9 @@ public class Map {
         firstRoom = room1;
     }
 
+
+
+//Getter metode
     public Room getFirstRoom() {
         return firstRoom;
     }
